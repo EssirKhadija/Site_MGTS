@@ -1,0 +1,196 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: -20px 20px;
+  background-color: transparent;
+  color: #BAE4F0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  margin: 0;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-logo img {
+  height: 200px;
+  width: auto;
+}
+
+@keyframes backgroundAnimation {
+  0% { background-image: url('../assets/image1.png'); }
+  33.33% { background-image: url('../assets/image2.png'); }
+  66.66% { background-image: url('../assets/image3.png'); }
+  100% { background-image: url('../assets/image1.png'); }
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.navbar-menu li {
+  margin: 0 25px;
+}
+
+.navbar-menu a {
+  color: #BAE4F0;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+  font-size: 18px;
+}
+
+.navbar-menu a:hover {
+  color: #FFD500; /* yellow on hover */
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-get-in-touch {
+  background-color: #009189; /* teal */
+  color: white;
+  padding: 15px 60px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  animation: backgroundAnimation 6s infinite step-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ensure hero container spans full width without shifting */
+.hero-wrapper {
+  width: 100vw;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+@keyframes backgroundAnimation {
+  0% { background-image: url('../assets/image1.png'); }
+  33.33% { background-image: url('../assets/image2.png'); }
+  66.66% { background-image: url('../assets/image3.png'); }
+  100% { background-image: url('../assets/image1.png'); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 900px;
+  padding: 0 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: #E0E0E0;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-devis {
+  background-color: #009189;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.btn-devis:hover {
+  background-color: #00735F;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 145, 137, 0.4);
+}
+
+.btn-whatsapp {
+  background-color: transparent;
+  color: white;
+  padding: 15px 30px;
+  border: 2px solid white;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.btn-whatsapp:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
