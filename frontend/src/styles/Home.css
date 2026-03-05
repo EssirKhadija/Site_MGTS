@@ -79,7 +79,7 @@
 
 .hero {
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -90,6 +90,7 @@
   align-items: center;
   position: relative;
   overflow: hidden;
+  padding-bottom: 80px;
 }
 
 /* ensure hero container spans full width without shifting */
@@ -193,4 +194,238 @@
 .btn-whatsapp:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
+}
+
+/* A propos Section */
+.a-propos {
+  padding: 60px 20px;
+  background-color: transparent;
+  width: 100%;
+  margin-top: -200px;
+  position: relative;
+  z-index: 10;
+}
+
+/* extra info block below cards */
+.a-propos-extra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 150px;
+  padding: 100px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.extra-images {
+  position: relative;
+  flex: 1 1 550px;
+}
+
+.extra-img-large {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.extra-img-small {
+  position: absolute;
+  bottom: -40px;
+  right: -120px;
+  width: 410px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.extra-text {
+  flex: 1 1 400px;
+}
+
+.extra-text h2 {
+  color: #EF6500;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.extra-text h3 {
+  font-size: 2.6rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.extra-text p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.extra-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.extra-text ul li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.extra-text ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #FFD500;
+}
+
+/* ================= ANIMATION A PROPOS EXTRA ================= */
+
+/* état initial images */
+.extra-images {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* état initial texte */
+.extra-text {
+  opacity: 0;
+  transform: translateX(120px);
+}
+
+/* quand visible */
+.extra-images.show {
+  animation: zoomIn 1s ease forwards;
+}
+
+.extra-text.show {
+  animation: slideInRight 1s ease forwards;
+}
+
+/* animation images */
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* animation texte */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.a-propos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* Animation */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Etat initial (caché) */
+.a-propos-card {
+  background: white;
+  border-radius: 12px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #009189;
+  position: relative;
+  transition: all 0.3s ease;
+
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+/* Quand la carte apparaît */
+.a-propos-card.show {
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+/* Hover */
+.a-propos-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 145, 137, 0.15);
+  border-top-color: #FF6500;
+}
+
+.a-propos-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #009189 0%, #00735F 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 40px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.a-propos-card:hover .a-propos-icon {
+  background: linear-gradient(135deg, #FF6500 0%, #FFD500 100%);
+  transform: scale(1.1);
+}
+
+.a-propos-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #1F2A5C;
+  margin: 20px 0 15px 0;
+  line-height: 1.3;
+}
+
+.a-propos-description {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .a-propos {
+    padding: 40px 15px;
+  }
+
+  .a-propos-container {
+    gap: 20px;
+  }
+
+  .a-propos-card {
+    padding: 30px 20px;
+  }
+
+  .a-propos-title {
+    font-size: 1.1rem;
+  }
+
+  .a-propos-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+  }
 }
