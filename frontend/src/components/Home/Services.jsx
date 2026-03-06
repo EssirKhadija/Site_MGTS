@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaSearch, FaCheckSquare, FaClipboard, FaBox, FaPassport, FaTruck } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import '../../styles/Home.css';
 
 const Services = () => {
+  const { t } = useTranslation();
   const [visibleCards, setVisibleCards] = useState([]);
   const containerRef = useRef(null);
 
@@ -29,46 +31,46 @@ const Services = () => {
     {
       id: 1,
       icon: FaSearch,
-      title: 'Sourcing de Produit',
-      description: 'Recherche et sélection de fournisseurs fiables à l\'internationale.'
+      title: t("Sourcing de Produit"),
+      description: t("Recherche et sélection de fournisseurs fiables à l'internationale.")
     },
     {
       id: 2,
       icon: FaCheckSquare,
-      title: 'Inspection de l\'Entrepôt Fournisseur',
-      description: 'Vérification de la qualité et conformité avant expédition.'
+      title: t("Inspection de l'Entrepôt Fournisseur"),
+      description: t("Vérification de la qualité et conformité avant expédition.")
     },
     {
       id: 3,
       icon: FaClipboard,
-      title: 'Suivi de la Réalisation de la Commande',
-      description: 'Contrôle continu du processus de production et respect des détails.'
+      title: t("Suivi de la Réalisation de la Commande"),
+      description: t("Contrôle continu du processus de production et respect des détails.")
     },
     {
       id: 4,
       icon: FaBox,
-      title: 'Exploitation des Colis Expédition',
-      description: 'Organisation et optimisation de vos envois internationaux.'
+      title: t("Exploitation des Colis Expédition"),
+      description: t("Organisation et optimisation de vos envois internationaux.")
     },
     {
       id: 5,
       icon: FaPassport,
-      title: 'Dédouanement',
-      description: 'Gestion complète des procédures douanières au Maroc.'
+      title: t("Dédouanement"),
+      description: t("Gestion complète des procédures douanières au Maroc.")
     },
     {
       id: 6,
       icon: FaTruck,
-      title: 'Transport & Livraison',
-      description: 'Acheminement sécurisé de vos marchandises jusqu\'à destination finale.'
+      title: t("Transport & Livraison"),
+      description: t("Acheminement sécurisé de vos marchandises jusqu'à destination finale.")
     }
   ];
 
   return (
-    <section className="services-section">
+    <section className="services-section" id="services">
       <div className="services-header">
-        <h1>Comment peut-on vous Aider ?</h1>
-        <p>Notre équipe dédiée est là pour vous accompagner à chaque étape de vos envois internationaux.</p>
+        <h1>{t("Comment peut-on vous Aider ?")}</h1>
+        <p>{t("Notre équipe dédiée est là pour vous accompagner à chaque étape de vos envois internationaux.")}</p>
       </div>
 
       <div className="services-grid" ref={containerRef}>
@@ -91,7 +93,7 @@ const Services = () => {
       </div>
 
       <div className="services-button-container">
-        <button className="btn-devis">DEMANDER UN DEVIS EN 24H</button>
+        <button className="btn-devis">{t("DEMANDER UN DEVIS EN 24H")}</button>
       </div>
     </section>
   );

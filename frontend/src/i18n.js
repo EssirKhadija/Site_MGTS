@@ -1,0 +1,131 @@
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+
+// the translations
+// (tip: move them in a JSON file and import them,
+// or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
+const resources = {
+  en: {
+    translation: {
+      "Importer de Chine vers le Maroc, en toute maîtrise": "Import from China to Morocco, with full control",
+      "Agent de sourcing basé en Chine, dédié aux sociétés marocaines : nous négocions vos achats, contrôlons la qualité, gérons les douanes et livrons jusqu'à votre entrépôt.": "China-based sourcing agent dedicated to Moroccan companies: we negotiate your purchases, control quality, manage customs and deliver to your warehouse.",
+      "DEMANDER UN DEVIS EN 24H": "REQUEST A QUOTE IN 24H",
+      "PARLER SUR WHATSAPP": "TALK ON WHATSAPP",
+      "Accueil": "Home",
+      "À Propos": "About Us",
+      "Nos Services": "Our Services",
+      "Nos Solutions": "Our Solutions",
+      "Nous Contacter": "Contact Us",
+      "GET IN TOUCH": "GET IN TOUCH",
+      "Négocié au Meilleur Coût": "Negotiated at the Best Cost",
+      "Usines vérifiées, Prix / MOQ / Délais optimisés.": "Verified factories, Optimized Price / MOQ / Deadlines.",
+      "Qualité Contrôlée (AQL)": "Controlled Quality (AQL)",
+      "Pré-expédition avec photos/vidéos & checklist signée.": "Pre-shipment with photos/videos & signed checklist.",
+      "DDP tout Inclus": "DDP All Inclusive",
+      "Fret, droits & taxes, dédouanement, livraison chez vous.": "Freight, duties & taxes, customs clearance, delivery to your home.",
+      "Comment peut-on vous Aider ?": "How can we help you?",
+      "Notre équipe dédiée est là pour vous accompagner à chaque étape de vos envois internationaux.": "Our dedicated team is here to support you at every step of your international shipments.",
+      "Sourcing de Produit": "Product Sourcing",
+      "Recherche et sélection de fournisseurs fiables à l'internationale.": "Search and selection of reliable suppliers internationally.",
+      "Inspection de l'Entrepôt Fournisseur": "Supplier Warehouse Inspection",
+      "Vérification de la qualité et conformité avant expédition.": "Quality and compliance verification before shipment.",
+      "Suivi de la Réalisation de la Commande": "Order Fulfillment Tracking",
+      "Contrôle continu du processus de production et respect des détails.": "Continuous control of the production process and respect for details.",
+      "Exploitation des Colis Expédition": "Shipment Package Handling",
+      "Organisation et optimisation de vos envois internationaux.": "Organization and optimization of your international shipments.",
+      "Dédouanement": "Customs Clearance",
+      "Gestion complète des procédures douanières au Maroc.": "Complete management of customs procedures in Morocco.",
+      "Transport & Livraison": "Transport & Delivery",
+      "Acheminement sécurisé de vos marchandises jusqu'à destination finale.": "Secure transportation of your goods to final destination.",
+      "Des solutions logistiques complètes et diversifiées, soutenues par notre Contrôle Qualité": "Complete and diversified logistics solutions, supported by our Quality Control",
+      "Que vous soyez une PME ou un grand compte, nous mettons à votre disposition une expertise logistique complète, alliant contrôle qualité rigoureux et capacités de distribution optimales, afin que vous disposiez d'une logistique nationale et internationale performante.": "Whether you are an SME or a large account, we provide you with complete logistics expertise, combining rigorous quality control and optimal distribution capabilities, so that you have high-performance national and international logistics.",
+      "Transport Aérien": "Air Transport",
+      "Rapidité et Efficacité": "Speed and Efficiency",
+      "Livraison express pour les envois urgents. Couverture mondiale avec partenaires fiables.": "Express delivery for urgent shipments. Worldwide coverage with reliable partners.",
+      "Transport Terrestre": "Ground Transport",
+      "Flexibilité et Proximité": "Flexibility and Proximity",
+      "Solutions adaptées à vos besoins. Suivi en temps réel de vos expéditions.": "Solutions tailored to your needs. Real-time tracking of your shipments.",
+      "Transport Maritime": "Maritime Transport",
+      "Solution pour gros volumes": "Solution for large volumes",
+      "Tarifs compétitifs pour les conteneurs. Manutention sécurisée et assurance complète.": "Competitive rates for containers. Secure handling and full insurance.",
+      "Des solutions logistiques complètes et diversifiées, soutenues par notre Contrôle Qualité": "Complete and diversified logistics solutions, supported by our Quality Control",
+      "Que vous soyez une PME ou un grand compte, nous mettons à votre disposition une expertise logistique complète, alliant contrôle qualité rigoureux et capacités de distribution optimales, afin que vous disposiez d'une logistique nationale et internationale performante.": "Whether you are an SME or a large account, we provide you with complete logistics expertise, combining rigorous quality control and optimal distribution capabilities, so that you have high-performance national and international logistics.",
+      "Votre Agent de Sourcing basé en Chine, dédié aux sociétés marocaines. Importer de Chine vers le Maroc, en toute maîtrise.": "Your China-based Sourcing Agent, dedicated to Moroccan companies. Import from China to Morocco, with full control.",
+      "Services": "Services",
+      "Inspection du Fabricant": "Manufacturer Inspection",
+      "Suivi de la Production": "Production Tracking",
+      "Consolidation des Colis": "Package Consolidation",
+      "Contrôle Qualité": "Quality Control",
+      "Douanes & Livraison": "Customs & Delivery",
+      "Support": "Support",
+      "Notre Process": "Our Process",
+      "Solution par Secteur": "Solutions by Sector",
+      "Demander un Devis": "Request a Quote",
+      "Guides & Ressources": "Guides & Resources",
+      "Contact": "Contact",
+      "Bureau Maroc - Marrakech": "Morocco Office - Marrakech",
+      "Bureau Chine - Shenzen": "China Office - Shenzhen",
+      "Email": "Email",
+      "TEMOIGNAGES": "TESTIMONIALS",
+      "Ce que disent nos clients": "What our clients say",
+      "Sourcing Import": "Import Sourcing",
+      "Excellent service ! Ils ont trouvé les meilleurs fournisseurs en Chine avec les meilleures prix. Une équipe très professionnelle et réactive.": "Excellent service! They found the best suppliers in China with the best prices. A very professional and responsive team.",
+      "La vérification qualité était impeccable. Ils ont détecté des défauts avant expédition. Un vrai gain de temps et d'argent pour nous.": "The quality verification was impeccable. They detected defects before shipment. A real time and money saver for us.",
+      "Processus sans tracas, tous les documents étaient en ordre. Livraison rapide directement à notre entrépôt. Très satisfaits!": "Hassle-free process, all documents were in order. Fast delivery directly to our warehouse. Very satisfied!",
+      "Partenaire fiable pour les envois internationaux. Tarifs compétitifs et suivi en temps réel. Je recommande vivement.": "Reliable partner for international shipments. Competitive rates and real-time tracking. I highly recommend.",
+      "Sourcing Complet": "Complete Sourcing",
+      "Une solution complète du sourcing à la livraison. Réduction masquée des coûts de 30%. Parfait pour notre business.": "A complete solution from sourcing to delivery. Hidden cost reduction of 30%. Perfect for our business.",
+      "Négociation": "Negotiation",
+      "Excellente négociation avec les fournisseurs. Ils ont obtenu les meilleures conditions pour nous. Bravo à l'équipe!": "Excellent negotiation with suppliers. They got the best conditions for us. Bravo to the team!",
+      "Ce qui nous distingue": "What sets us apart",
+      "Le partenaire Chine→Maroc qui sécurise vos marges": "The China→Morocco partner that secures your margins",
+      "Agent de sourcing basé en Chine, nous alignons prix, délais et conformité pour livrer en DDP jusqu'à votre entrepôt — avec des preuves de qualité à chaque étape.": "China-based sourcing agent, we align prices, deadlines and compliance to deliver DDP to your warehouse — with quality evidence at every step.",
+      "Négociation experte": "Expert negotiation",
+      "Qualité AQL prouvée": "Proven AQL quality",
+      "DDP tout inclus": "DDP all inclusive",
+      "Devis 24h (FR/EN)": "24h quote (FR/EN)",    }
+  },
+  fr: {
+    translation: {
+      "Importer de Chine vers le Maroc, en toute maîtrise": "Importer de Chine vers le Maroc, en toute maîtrise",
+      "Agent de sourcing basé en Chine, dédié aux sociétés marocaines : nous négocions vos achats, contrôlons la qualité, gérons les douanes et livrons jusqu'à votre entrépôt.": "Agent de sourcing basé en Chine, dédié aux sociétés marocaines : nous négocions vos achats, contrôlons la qualité, gérons les douanes et livrons jusqu'à votre entrépôt.",
+      "DEMANDER UN DEVIS EN 24H": "DEMANDER UN DEVIS EN 24H",
+      "PARLER SUR WHATSAPP": "PARLER SUR WHATSAPP",
+      "Accueil": "Accueil",
+      "À Propos": "À Propos",
+      "Nos Services": "Nos Services",
+      "Nos Solutions": "Nos Solutions",
+      "Nous Contacter": "Nous Contacter",
+      "GET IN TOUCH": "GET IN TOUCH",
+      "Négocié au Meilleur Coût": "Négocié au Meilleur Coût",
+      "Usines vérifiées, Prix / MOQ / Délais optimisés.": "Usines vérifiées, Prix / MOQ / Délais optimisés.",
+      "Qualité Contrôlée (AQL)": "Qualité Contrôlée (AQL)",
+      "Pré-expédition avec photos/vidéos & checklist signée.": "Pré-expédition avec photos/vidéos & checklist signée.",
+      "DDP tout Inclus": "DDP tout Inclus",
+      "Fret, droits & taxes, dédouanement, livraison chez vous.": "Fret, droits & taxes, dédouanement, livraison chez vous.",
+      "Comment peut-on vous Aider ?": "Comment peut-on vous Aider ?",
+      "Notre équipe dédiée est là pour vous accompagner à chaque étape de vos envois internationaux.": "Notre équipe dédiée est là pour vous accompagner à chaque étape de vos envois internationaux.",
+      "Des solutions logistiques complètes et diversifiées, soutenues par notre Contrôle Qualité": "Des solutions logistiques complètes et diversifiées, soutenues par notre Contrôle Qualité",
+      "Que vous soyez une PME ou un grand compte, nous mettons à votre disposition une expertise logistique complète, alliant contrôle qualité rigoureux et capacités de distribution optimales, afin que vous disposiez d'une logistique nationale et internationale performante.": "Que vous soyez une PME ou un grand compte, nous mettons à votre disposition une expertise logistique complète, alliant contrôle qualité rigoureux et capacités de distribution optimales, afin que vous disposiez d'une logistique nationale et internationale performante.",
+      "Votre Agent de Sourcing basé en Chine, dédié aux sociétés marocaines. Importer de Chine vers le Maroc, en toute maîtrise.": "Votre Agent de Sourcing basé en Chine, dédié aux sociétés marocaines. Importer de Chine vers le Maroc, en toute maîtrise."
+    }
+  }
+};
+
+i18n
+  // pass the i18n instance to react-i18next.
+  .use(initReactI18next)
+  // init i18next
+  // for all options read: https://www.i18next.com/overview/configuration-options
+  .init({
+    resources,
+    lng: 'fr', // language to use, more info here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
+    // you can use the i18n.changeLanguage function to change the language manually: https://www.i18next.com/overview/api#changelanguage
+    // if you're using a language detector, do not define the lng option
+
+    interpolation: {
+      escapeValue: false // react already does escaping
+    }
+  });
+
+export default i18n;

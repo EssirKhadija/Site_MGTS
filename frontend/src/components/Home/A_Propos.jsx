@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { FaHandshake, FaCheckCircle, FaTruck } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import '../../styles/Home.css';
 import image4 from '../../assets/image4.png';
 import image5 from '../../assets/image5.png';
 
-const Services = () => {
+const A_Propos = () => {
+  const { t } = useTranslation();
 
   useEffect(() => {
 
@@ -28,25 +30,25 @@ const Services = () => {
     {
       id: 1,
       icon: FaHandshake,
-      title: 'Négocié au Meilleur Coût',
-      description: 'Usines vérifiées, Prix / MOQ / Délais optimisés.'
+      title: t("Négocié au Meilleur Coût"),
+      description: t("Usines vérifiées, Prix / MOQ / Délais optimisés.")
     },
     {
       id: 2,
       icon: FaCheckCircle,
-      title: 'Qualité Contrôlée (AQL)',
-      description: 'Pré-expédition avec photos/vidéos & checklist signée.'
+      title: t("Qualité Contrôlée (AQL)"),
+      description: t("Pré-expédition avec photos/vidéos & checklist signée.")
     },
     {
       id: 3,
       icon: FaTruck,
-      title: 'DDP tout Inclus',
-      description: 'Fret, droits & taxes, dédouanement, livraison chez vous.'
+      title: t("DDP tout Inclus"),
+      description: t("Fret, droits & taxes, dédouanement, livraison chez vous.")
     }
   ];
 
   return (
-    <section className="a-propos">
+    <section className="a-propos" id="a-propos">
 
       <div className="a-propos-container">
         {a_propos.map((item) => {
@@ -81,21 +83,21 @@ const Services = () => {
 
         <div className="extra-text">
 
-          <h2>Ce qui nous distingue</h2>
+          <h2>{t("Ce qui nous distingue")}</h2>
 
           <h3>
-            Le partenaire Chine→Maroc qui sécurise vos marges
+            {t("Le partenaire Chine→Maroc qui sécurise vos marges")}
           </h3>
 
           <p>
-            Agent de sourcing basé en Chine, nous alignons prix, délais et conformité pour livrer en DDP jusqu'à votre entrepôt — avec des preuves de qualité à chaque étape.
+            {t("Agent de sourcing basé en Chine, nous alignons prix, délais et conformité pour livrer en DDP jusqu'à votre entrepôt — avec des preuves de qualité à chaque étape.")}
           </p>
 
           <ul>
-            <li>Négociation experte</li>
-            <li>Qualité AQL prouvée</li>
-            <li>DDP tout inclus</li>
-            <li>Devis 24h (FR/EN)</li>
+            <li>{t("Négociation experte")}</li>
+            <li>{t("Qualité AQL prouvée")}</li>
+            <li>{t("DDP tout inclus")}</li>
+            <li>{t("Devis 24h (FR/EN)")}</li>
           </ul>
 
         </div>
@@ -106,4 +108,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default A_Propos;

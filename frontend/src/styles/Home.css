@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -75,6 +79,33 @@
   font-weight: bold;
   transition: all 0.3s ease;
   font-size: 0.95rem;
+}
+
+.language-switcher {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 30;
+}
+
+.btn-language {
+  background-color: transparent;
+  color: #FF6500;
+  border: 1px solid #BAE4F0;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-language:hover {
+  background-color: #BAE4F0;
+  color: #009189;
 }
 
 .hero {
