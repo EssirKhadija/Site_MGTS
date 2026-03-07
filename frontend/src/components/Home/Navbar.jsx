@@ -3,6 +3,7 @@ import { FaGlobe } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import '../../styles/Home.css';
 import logo from '../../assets/logo1.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
@@ -26,7 +27,9 @@ const Navbar = () => {
           <li><a href="#footer">{t("Nous Contacter")}</a></li>
         </ul>
         <div className="navbar-buttons">
-          <button className="btn-get-in-touch">{t("GET IN TOUCH")}</button>
+          <Link to="/login">
+            <button className="btn-get-in-touch">{t("GET IN TOUCH")}</button>
+          </Link>
         </div>
       </nav>
       <div className="language-switcher">

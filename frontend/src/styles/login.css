@@ -1,0 +1,125 @@
+.login-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.login-left, .login-right {
+  flex: 1;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+}
+
+.login-left {
+  background-color:transparent;
+}
+
+.login-right {
+  background-color: #00bfa6;
+  color: white;
+  text-align: center;
+  border-radius: 100px;
+}
+
+.social-login {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.social-button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.social-button:hover {
+  background-color: #d6d6d6;
+}
+
+.forgot-password {
+  display: block;
+  margin: 10px 0;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.signupl-button {
+  padding: 15px 80px;
+  background-color: white;
+  color: #00bfa6;
+  border: 2px solid white;
+  border-radius: 20px;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  
+}
+
+.signupl-button:hover {
+  background-color: #00a58e;
+  color: white;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+
+.form-group input {
+  width: 25vw;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  font-size: 16px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #009189;
+  box-shadow: 0 0 5px rgba(43, 151, 181, 0.5);
+}
+
+.login-button {
+  padding: 15px;
+  background-color: #009189;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.login-button:hover {
+  background-color: #FF6500;
+}

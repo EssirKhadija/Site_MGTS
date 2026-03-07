@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FaSearch, FaCheckSquare, FaClipboard, FaBox, FaPassport, FaTruck } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import '../../styles/Home.css';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const { t } = useTranslation();
@@ -93,7 +94,9 @@ const Services = () => {
       </div>
 
       <div className="services-button-container">
-        <button className="btn-devis">{t("DEMANDER UN DEVIS EN 24H")}</button>
+        <Link to="/login">
+          <button className="btn-devis">{t("DEMANDER UN DEVIS EN 24H")}</button>
+        </Link>
       </div>
     </section>
   );
