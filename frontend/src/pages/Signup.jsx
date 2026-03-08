@@ -9,6 +9,7 @@ function Signup() {
     const { t } = useTranslation();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [telephone, setTelephone] = useState('');
     const [password, setPassword] = useState('');
     const [refresh, setRefresh] = useState(0);
 
@@ -16,6 +17,7 @@ function Signup() {
         e.preventDefault();
         console.log('Name:', name);
         console.log('Email:', email);
+        console.log('Telephone:', telephone);
         console.log('Password:', password);
     };
 
@@ -65,6 +67,16 @@ function Signup() {
                             placeholder={t('Email')}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="telephone"
+                            id="telephone"
+                            placeholder={t('Phone Number')}
+                            value={telephone}
+                            onChange={(e) => setTelephone(e.target.value)}
                             required
                         />
                     </div>

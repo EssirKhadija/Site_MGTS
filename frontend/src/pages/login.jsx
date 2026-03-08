@@ -64,7 +64,9 @@ function Login() {
             />
           </div>
           <a href="#" className="forgot-password">{t("Forgot your password?")}</a>
-          <button type="submit" className="login-button">{t("Sign In")}</button>
+          <Link to="/client-dashboard" style={{ textDecoration: 'none' }}>
+            <button type="submit" className="login-button">{t("Sign In")}</button>
+          </Link>
         </form>
       </div>
       <div className="login-right">
