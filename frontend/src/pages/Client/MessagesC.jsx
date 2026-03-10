@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../../styles/Client.css";
+import ClientLayout from "../../components/Client/ClientLayout";
 
 const threads = [
   { id: "CMD-2024-001", product: "Conteneurs de stockage industriels", unread: 1, lastMsg: "Nous attendons la réponse de Shenzhen MetalTech, délai 48h.", lastTime: "11:02",
@@ -45,13 +46,14 @@ export default function Messages() {
   const msgs = allMsgs[activeThread?.id] ?? [];
 
   return (
-    <div className="page-content" style={{ height: "calc(100vh - 58px)", paddingBottom: 0, display: "flex", flexDirection: "column" }}>
-      <div className="page-header" style={{ flexShrink: 0 }}>
-        <div>
-          <h1>Messagerie</h1>
-          <p>Échanges sécurisés liés à chaque commande.</p>
+    <ClientLayout>
+      <div className="page-content" style={{ height: "calc(100vh - 58px)", paddingBottom: 0, display: "flex", flexDirection: "column" }}>
+        <div className="page-header" style={{ flexShrink: 0 }}>
+          <div>
+            <h1>Messagerie</h1>
+            <p>Échanges sécurisés liés à chaque commande.</p>
+          </div>
         </div>
-      </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "300px 1fr", gap: 18, flex: 1, minHeight: 0 }}>
 
@@ -131,6 +133,8 @@ export default function Messages() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+
+    </ClientLayout>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../../styles/Client.css";
-
+import ClientLayout from "../../components/Client/ClientLayout";
 const initialProfile = {
   prenom: "Jean",
   nom: "Dupont",
@@ -38,12 +38,11 @@ export default function Profile() {
   };
 
   return (
-    <div className="page-content" style={{ maxWidth: 680 }}>
-      <div className="page-header">
-        <div>
+    <ClientLayout>
+      <div className="page-content">
           <h1>Mon profil</h1>
           <p>Gérez vos informations personnelles et la sécurité de votre compte.</p>
-        </div>
+        
       </div>
 
       {/* Avatar + summary */}
@@ -191,6 +190,6 @@ export default function Profile() {
         </p>
         <button className="btn btn-danger btn-sm">Supprimer mon compte</button>
       </div>
-    </div>
+    </ClientLayout> 
   );
 }

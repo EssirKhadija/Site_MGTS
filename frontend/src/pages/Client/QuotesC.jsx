@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../../styles/Client.css";
-
+import ClientLayout from "../../components/Client/ClientLayout";
 const quotes = [
   {
     id: "DEV-2024-001",
@@ -49,12 +49,14 @@ export default function Quotes() {
   };
 
   return (
-    <div className="page-content">
-      <div className="page-header">
-        <div>
-          <h1>Mes devis</h1>
-          <p>{quotes.length} devis en cours de traitement.</p>
-        </div>
+    <ClientLayout>
+      <div className="page-content">
+        
+        <div className="page-header">
+          <div>
+            <h1>Mes devis</h1>
+            <p>{quotes.length} devis en cours de traitement.</p>
+          </div>
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "300px 1fr", gap: 20 }}>
@@ -205,5 +207,6 @@ export default function Quotes() {
         </div>
       )}
     </div>
+    </ClientLayout>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/Client.css";
+import ClientLayout from "../../components/Client/ClientLayout";
 
 const incoterms = ["FOB", "CIF", "EXW", "DDP", "DAP", "CFR", "FCA", "CPT"];
 
@@ -40,23 +41,24 @@ export default function NewRequest() {
 
   if (submitted) {
     return (
-      <div className="page-content" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: 400 }}>
-        <div style={{ textAlign: "center" }}>
-          <div style={{ width: 64, height: 64, borderRadius: "50%", background: "var(--teal-light)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, color: "var(--teal)", margin: "0 auto 16px" }}>✓</div>
-          <h2 style={{ fontSize: 20, fontWeight: 700, color: "var(--text-dark)", marginBottom: 8 }}>Demande envoyée !</h2>
-          <p style={{ color: "var(--text-mid)", fontSize: 13 }}>Notre équipe analyse votre demande. Redirection en cours…</p>
+      <ClientLayout>
+        <div className="page-content" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: 400 }}>
+          <div style={{ textAlign: "center" }}>
+            <div style={{ width: 24, height: 64, borderRadius: "50%", background: "var(--teal-light)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, color: "var(--teal)", margin: "0 auto 16px" }}>✓</div>
+            <h2 style={{ fontSize: 20, fontWeight: 700, color: "var(--text-dark)", marginBottom: 8 }}>Demande envoyée !</h2>
+            <p style={{ color: "var(--text-mid)", fontSize: 13 }}>Notre équipe analyse votre demande. Redirection en cours…</p>
+          </div>
         </div>
-      </div>
+      </ClientLayout>
     );
   }
 
   return (
-    <div className="page-content" style={{ maxWidth: 760 }}>
-      <div className="page-header">
-        <div>
-          <h1>Nouvelle demande</h1>
-          <p>Produit existant ou demande entièrement personnalisée.</p>
-        </div>
+    <ClientLayout>
+      <div className="page-content">
+            <h1>Nouvelle demande</h1>
+            <p>Produit existant ou demande entièrement personnalisée.</p>
+          
       </div>
 
       <div className="card card-pad">
@@ -248,6 +250,6 @@ export default function NewRequest() {
           </button>
         </div>
       </div>
-    </div>
+    </ClientLayout>
   );
 }

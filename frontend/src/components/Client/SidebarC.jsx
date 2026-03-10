@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "../../styles/Client.css";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logoC.png";
 
 const navItems = [
   { to: "/client-dashboard", icon: "⬡", label: "Tableau de bord" },

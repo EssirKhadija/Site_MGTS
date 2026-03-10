@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/Client.css";
+import ClientLayout from "../../components/Client/ClientLayout";
+
 
 const statusConfig = {
   brouillon:     { label: "Brouillon",      color: "#89B5BE", bg: "#F0F8FA"  },
@@ -89,16 +91,17 @@ export default function Orders() {
   /* ── List view ── */
   if (!selected) {
     return (
-      <div className="page-content">
-        <div className="page-header">
-          <div>
-            <h1>Mes commandes</h1>
-            <p>{orders.length} commandes au total.</p>
+      <ClientLayout>
+        <div className="page-content">
+          <div className="page-header">
+            <div>
+              <h1>Mes commandes</h1>
+              <p>{orders.length} commandes au total.</p>
+            </div>
+            <button className="btn btn-primary" onClick={() => navigate("/new")}>
+              ✦ Nouvelle demande
+            </button>
           </div>
-          <button className="btn btn-primary" onClick={() => navigate("/new")}>
-            ✦ Nouvelle demande
-          </button>
-        </div>
 
         <div className="card">
           <div
@@ -140,7 +143,8 @@ export default function Orders() {
             );
           })}
         </div>
-      </div>
+        </div>
+      </ClientLayout>
     );
   }
 
@@ -148,10 +152,11 @@ export default function Orders() {
   const s = statusConfig[selected.status];
 
   return (
-    <div className="page-content">
-      {/* Back + Title */}
-      <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 28 }}>
-        <button className="btn btn-ghost btn-sm" onClick={() => setSelected(null)}>← Retour</button>
+    <ClientLayout>
+      <div className="page-content">
+        {/* Back + Title */}
+        <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 28 }}>
+          <button className="btn btn-ghost btn-sm" onClick={() => setSelected(null)}>← Retour</button>
         <div>
           <div className="mono" style={{ fontSize: 11, color: "var(--text-soft)" }}>{selected.id}</div>
           <h1 style={{ fontSize: 19, fontWeight: 700, color: "var(--text-dark)" }}>{selected.product}</h1>
@@ -256,7 +261,8 @@ export default function Orders() {
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+    </ClientLayout>
   );
 }
