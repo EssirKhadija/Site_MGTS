@@ -49,7 +49,7 @@ export default function SupplierDashboard() {
       
       <div style={{ marginBottom: 32 }}>
         <h1 style={{ fontSize: 23, fontWeight: 700, color: "var(--text-dark)" }}>
-          Bonjour, Shenzhen MetalTech 👋
+          Bonjour, Shenzhen MetalTech 
         </h1>
         <p style={{ color: "var(--text-mid)", fontSize: 13, marginTop: 5 }}>
           Voici l'état de votre activité fournisseur aujourd'hui.

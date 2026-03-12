@@ -60,7 +60,7 @@ export default function SupplierProducts() {
           <h1>Mes produits</h1>
           <p>{products.filter(p => p.status === "published").length} publiés · {products.filter(p => p.status === "draft").length} brouillons</p>
         </div>
-        <button className="btn btn-orange" onClick={openAdd}>➕ Ajouter un produit</button>
+        <button className="btn btn-orange" onClick={openAdd}> Ajouter un produit</button>
       </div>
 
       {/* Filters */}
@@ -91,7 +91,6 @@ export default function SupplierProducts() {
           onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--orange)"; e.currentTarget.style.background = "var(--orange-light)"; e.currentTarget.style.color = "var(--orange)"; }}
           onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--text-soft)"; }}
         >
-          <div style={{ fontSize: 36 }}>➕</div>
           <div style={{ fontSize: 13, fontWeight: 600 }}>Ajouter un produit</div>
         </div>
       </div>

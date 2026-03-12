@@ -1,5 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../../styles/Supplier.css";
+import logo from "../../assets/logoC.png";
 
 const navItems = [
   { to: "/supplier",          icon: "⬡", label: "Tableau de bord"  },
@@ -15,16 +16,17 @@ export default function SupplierSidebar({ supplier }) {
     ? supplier.name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase()
     : "SF";
 
+  const navigate = useNavigate();
+
+
   return (
+
     <aside className="sidebar">
       {/* Logo — orange tint for supplier */}
       <div className="sidebar-logo">
-        <div className="sidebar-logo-icon">S</div>
-        <div>
-          <div className="sidebar-logo-text">MGTS</div>
-          <div className="sidebar-logo-sub">ESPACE FOURNISSEUR</div>
-        </div>
-      </div>
+             <img src={logo} alt="MGTS Logo" style={{ width: 190, height: 150, marginRight: 8 }} />
+              
+            </div>
 
       {/* Pending badge if not yet validated */}
       {supplier?.status === "pending" && (
@@ -60,6 +62,9 @@ export default function SupplierSidebar({ supplier }) {
             <div className="sidebar-email">{supplier?.email ?? ""}</div>
           </div>
         </NavLink>
+        <button onClick={() => navigate('/login')} className="logout-button">
+          Déconnexion
+        </button>
       </div>
     </aside>
   );
