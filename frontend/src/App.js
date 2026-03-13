@@ -17,7 +17,12 @@ import SupplierDemands from "./pages/Fournisseur/SupplierDemands";
 import SupplierOrders from "./pages/Fournisseur/SupplierOrders";
 import SupplierMessages from "./pages/Fournisseur/SupplierMessages";
 import SupplierProfile from "./pages/Fournisseur/SupplierProfile";
-
+import TransportDashboard from "./pages/Transport/TransportDashboard";
+import ValidatedOrders    from "./pages/Transport/ValidatedOrders";
+import LogisticsFees      from "./pages/Transport/LogisticsFees";
+import OperationsHistory  from "./pages/Transport/OperationsHistory";
+import TransportMessages  from "./pages/Transport/TransportMessages";
+import TransportProfile   from "./pages/Transport/TransportProfile";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -34,13 +39,18 @@ function AnimatedRoutes() {
         <Route path="/orders" element={<OrdersC />} />
         <Route path="/messages" element={<MessagesC />} />
         <Route path="/profile" element={<ProfileC />} />
-        <Route path="/supplier"  element={<SupplierDashboard />} />
+        <Route path="/supplier" element={<SupplierDashboard />} />
         <Route path="/supplier/products" element={<SupplierProducts />} />
         <Route path="/supplier/demands" element={<SupplierDemands />} />
         <Route path="/supplier/orders" element={<SupplierOrders />} />
         <Route path="/supplier/messages" element={<SupplierMessages />} />
         <Route path="/supplier/profile" element={<SupplierProfile />} />
-
+        <Route path="/transport" element={<TransportDashboard />} />
+        <Route path="/transport/orders" element={<ValidatedOrders />} />
+        <Route path="/transport/logistics" element={<LogisticsFees />} />
+        <Route path="/transport/history" element={<OperationsHistory />} />
+        <Route path="/transport/messages" element={<TransportMessages />} />
+        <Route path="/transport/profile" element={<TransportProfile />} />
       </Routes>
     </AnimatePresence>
   );
