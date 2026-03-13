@@ -24,6 +24,15 @@ import OperationsHistory  from "./pages/Transport/OperationsHistory";
 import TransportMessages  from "./pages/Transport/TransportMessages";
 import TransportProfile   from "./pages/Transport/TransportProfile";
 
+import TransitaireLayout     from "./pages/Transitaire/TransitaireLayout";
+import TransitaireDashboard  from "./pages/Transitaire/TransitaireDashboard";
+import TransitaireOrders     from "./pages/Transitaire/TransitaireOrders";
+import CustomsFees           from "./pages/Transitaire/CustomsFees";
+import ImportValidation      from "./pages/Transitaire/ImportValidation";
+import DossiersHistory       from "./pages/Transitaire/DossiersHistory";
+import TransitaireMessages   from "./pages/Transitaire/TransitaireMessages";
+import TransitaireProfile    from "./pages/Transitaire/TransitaireProfile";
+
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -51,6 +60,16 @@ function AnimatedRoutes() {
         <Route path="/transport/history" element={<OperationsHistory />} />
         <Route path="/transport/messages" element={<TransportMessages />} />
         <Route path="/transport/profile" element={<TransportProfile />} />
+
+        <Route path="/transitaire" element={<TransitaireLayout />}>
+          <Route index element={<TransitaireDashboard />} />
+          <Route path="orders" element={<TransitaireOrders />} />
+          <Route path="customs" element={<CustomsFees />} />
+          <Route path="import" element={<ImportValidation />} />
+          <Route path="history" element={<DossiersHistory />} />
+          <Route path="messages" element={<TransitaireMessages />} />
+          <Route path="profile" element={<TransitaireProfile />} />
+        </Route>
       </Routes>
     </AnimatePresence>
   );

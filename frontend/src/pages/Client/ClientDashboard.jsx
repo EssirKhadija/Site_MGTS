@@ -41,7 +41,7 @@ export default function ClientDashboard() {
       {/* Header */}
       <div style={{ marginBottom: 32 }}>
         <h1 style={{ fontSize: 23, fontWeight: 700, color: "var(--text-dark)" }}>
-          Bonjour, Jean 👋
+          Bonjour, Jean 
         </h1>
         <p style={{ color: "var(--text-mid)", fontSize: 13, marginTop: 5 }}>
           Voici l'état de vos opérations en cours.
