@@ -11,6 +11,14 @@ const history = [
 
 const modeIcon = { sea:"🚢", air:"✈️", road:"🚛" };
 
+const historyStyles = {
+  filterBar: { display: "flex", gap: 12, marginBottom: 20, alignItems: "center", flexWrap: "wrap", justifyContent: "space-between" },
+  search: { flex: 1, minWidth: 250, maxWidth: 360, display: "flex", alignItems: "center", gap: 8, border: "1px solid var(--border)", borderRadius: 12, padding: "8px 10px", background: "var(--bg-alt)" },
+  searchInput: { width: "100%", border: "none", outline: "none", background: "transparent", fontSize: 13, color: "var(--text-dark)", fontFamily: "var(--font)" },
+  filterGroup: { display: "flex", gap: 8, flexWrap: "wrap" },
+  filterBtn: selected => ({ padding: "7px 16px", borderRadius: 20, border: `1.5px solid ${selected ? "var(--ac)" : "var(--border)"}`, background: selected ? "var(--ac-light)" : "transparent", color: selected ? "var(--ac)" : "var(--text-mid)", fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "var(--font)", transition: "all .15s" }),
+};
+
 export default function DossiersHistory() {
   const [selected, setSelected] = useState(null);
   const [search, setSearch]     = useState("");
@@ -75,7 +83,7 @@ export default function DossiersHistory() {
               </div>
             ))}
             <hr className="divider" />
-            <button className="btn btn-ghost btn-sm">↓ Télécharger le dossier complet</button>
+            <button className="btn btn-ghost btn-sm">Télécharger le dossier complet</button>
           </div>
         </div>
       </div>
@@ -89,7 +97,7 @@ export default function DossiersHistory() {
           <h1>Historique des dossiers</h1>
           <p>{history.length} dossiers traités · {totalFees.toLocaleString("fr")} € de frais total</p>
         </div>
-        <button className="btn btn-ghost">↓ Exporter CSV</button>
+        <button className="btn btn-ghost">Exporter CSV</button>
       </div>
 
       {/* Summary */}
@@ -113,15 +121,16 @@ export default function DossiersHistory() {
       </div>
 
       {/* Filters */}
-      <div style={{ display:"flex", gap:12, marginBottom:20, alignItems:"center" }}>
-        <div className="navbar-search" style={{ flex:1, maxWidth:340 }}>
+      <div style={historyStyles.filterBar}>
+        <div className="navbar-search" style={historyStyles.search}>
           <span style={{ color:"var(--text-soft)" }}>⌕</span>
-          <input placeholder="Rechercher par ID, produit, client…" value={search} onChange={e=>setSearch(e.target.value)} />
+          <input style={historyStyles.searchInput} type="text" placeholder="Rechercher par ID, produit, client…" value={search} onChange={e=>setSearch(e.target.value)} />
         </div>
-        <div style={{ display:"flex", gap:8 }}>
-          {["Tous","sea","air","road"].map(m=>(
-            <button key={m} onClick={()=>setModeFilter(m)} style={{ padding:"7px 16px", borderRadius:20, border:`1.5px solid ${modeFilter===m?"var(--ac)":"var(--border)"}`, background:modeFilter===m?"var(--ac-light)":"transparent", color:modeFilter===m?"var(--ac)":"var(--text-mid)", fontSize:12, fontWeight:600, cursor:"pointer", fontFamily:"var(--font)", transition:"all .15s" }}>
-              {m==="Tous"?"Tous":modeIcon[m]+" "+m.charAt(0).toUpperCase()+m.slice(1)}
+
+        <div style={historyStyles.filterGroup}>
+          {["Tous","sea","air","road"].map(m => (
+            <button key={m} onClick={()=>setModeFilter(m)} style={historyStyles.filterBtn(modeFilter===m)}>
+              {m==="Tous" ? "Tous" : modeIcon[m] + " " + m.charAt(0).toUpperCase() + m.slice(1)}
             </button>
           ))}
         </div>

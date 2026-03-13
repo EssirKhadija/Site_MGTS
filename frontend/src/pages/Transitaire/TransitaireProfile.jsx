@@ -33,8 +33,8 @@ export default function TransitaireProfile() {
   const handleSave = () => { setSaved(true); setTimeout(() => setSaved(false), 2500); };
 
   return (
-    <div className="page-content" style={{ maxWidth: 700 }}>
-      <div className="page-header">
+    <div className="page-content" style={{ width: "100%", maxWidth: "100%", minHeight: "100vh", padding: "24px 20px", boxSizing: "border-box" }}>
+      <div className="page-header" style={{ maxWidth: 1320, width: "100%", margin: "0 auto" }}>
         <div>
           <h1>Mon compte</h1>
           <p>Informations de votre société de transit et de dédouanement.</p>

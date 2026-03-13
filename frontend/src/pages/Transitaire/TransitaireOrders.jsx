@@ -65,6 +65,16 @@ const feeTypes = [
 
 const emptyFees = Object.fromEntries(feeTypes.map(f => [f.key, ""]));
 
+const transitaireStyles = {
+  pageContent: { padding: "22px 18px 32px", maxWidth: 1200, margin: "0 auto", gap: 20 },
+  pageHeader: { display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 8, marginBottom: 20 },
+  banner: { display: "flex", gap: 12, alignItems: "flex-start", background: "#FFF8E5", border: "1px solid #FFDEA7", borderRadius: 12, padding: 14, marginBottom: 20 },
+  filterContainer: { display: "flex", gap: 8, marginBottom: 24, flexWrap: "wrap" },
+  emptyState: { textAlign: "center", padding: 50, color: "var(--text-soft)" },
+  modalCard: { width: 620, padding: 30, maxHeight: "90vh", overflowY: "auto" },
+  smallModalCard: { width: 520, padding: 30, maxHeight: "90vh", overflowY: "auto" },
+};
+
 export default function TransitaireOrders() {
   const [dossiers, setDossiers] = useState(initialDossiers);
   const [filter, setFilter]     = useState("Tous");
@@ -93,8 +103,8 @@ export default function TransitaireOrders() {
   });
 
   return (
-    <div className="page-content">
-      <div className="page-header">
+    <div className="page-content" style={transitaireStyles.pageContent}>
+      <div className="page-header" style={transitaireStyles.pageHeader}>
         <div>
           <h1>Commandes</h1>
           <p>Consultez l'ensemble des commandes MGTS assignées à votre dossier.</p>
@@ -103,7 +113,7 @@ export default function TransitaireOrders() {
 
       {/* Alert */}
       {dossiers.filter(d => d.status === "new").length > 0 && (
-        <div className="pending-banner">
+        <div className="pending-banner" style={transitaireStyles.banner}>
           <div className="pending-banner-icon">✦</div>
           <div>
             <div className="pending-banner-title">
@@ -117,7 +127,7 @@ export default function TransitaireOrders() {
       )}
 
       {/* Filters */}
-      <div style={{ display: "flex", gap: 8, marginBottom: 24, flexWrap: "wrap" }}>
+      <div style={transitaireStyles.filterContainer}>
         {filters.map(f => (
           <button key={f} onClick={() => setFilter(f)} style={{ padding: "7px 18px", borderRadius: 20, border: `1.5px solid ${filter === f ? "var(--ac)" : "var(--border)"}`, background: filter === f ? "var(--ac-light)" : "transparent", color: filter === f ? "var(--ac)" : "var(--text-mid)", fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "var(--font)", transition: "all .15s" }}>
             {f}
@@ -143,7 +153,7 @@ export default function TransitaireOrders() {
       </div>
 
       {filtered.length === 0 && (
-        <div style={{ textAlign: "center", padding: 60, color: "var(--text-soft)" }}>
+        <div style={transitaireStyles.emptyState}>
           <div style={{ fontSize: 32, marginBottom: 10 }}>◈</div>
           <p>Aucun dossier dans cette catégorie.</p>
         </div>
@@ -152,7 +162,7 @@ export default function TransitaireOrders() {
       {/* Detail modal */}
       {detail && (
         <div className="modal-overlay" onClick={() => setDetail(null)}>
-          <div className="card" style={{ width: 620, padding: 30, maxHeight: "90vh", overflowY: "auto" }} onClick={e => e.stopPropagation()}>
+          <div className="card" style={transitaireStyles.modalCard} onClick={e => e.stopPropagation()}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 22 }}>
               <div>
                 <div className="mono" style={{ fontSize: 11, color: "var(--text-soft)", marginBottom: 4 }}>{detail.id}</div>
@@ -238,7 +248,7 @@ export default function TransitaireOrders() {
       {/* Fee entry modal */}
       {feeTarget && (
         <div className="modal-overlay" onClick={() => setFeeTarget(null)}>
-          <div className="card" style={{ width: 520, padding: 30, maxHeight: "90vh", overflowY: "auto" }} onClick={e => e.stopPropagation()}>
+          <div className="card" style={transitaireStyles.smallModalCard} onClick={e => e.stopPropagation()}>
             <div style={{ marginBottom: 22 }}>
               <div className="modal-icon" style={{ background: "var(--ac-light)", color: "var(--ac)" }}>✦</div>
               <div className="modal-title">Frais douaniers</div>

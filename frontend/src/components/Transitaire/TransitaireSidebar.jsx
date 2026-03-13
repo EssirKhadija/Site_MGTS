@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
+import logo from "../../assets/logoC.png";
 
 const navItems = [
-  { to: "/transitaire",           icon: "⬡", label: "Tableau de bord"      },
-  { to: "/transitaire/orders",    icon: "◈", label: "Commandes",    badge: 3 },
-  { to: "/transitaire/customs",   icon: "✦", label: "Frais douaniers"       },
-  { to: "/transitaire/import",    icon: "◆", label: "Validation import"     },
-  { to: "/transitaire/history",   icon: "▣", label: "Historique dossiers"   },
-  { to: "/transitaire/messages",  icon: "◎", label: "Messagerie",  badge: 2 },
-  { to: "/transitaire/profile",   icon: "▤", label: "Mon compte"            },
+  { to: "/transitaire", icon: "⬡", label: "Tableau de bord" },
+  { to: "/transitaire/orders", icon: "◈", label: "Commandes", badge: 3 },
+  { to: "/transitaire/customs", icon: "✦", label: "Frais douaniers" },
+  { to: "/transitaire/import", icon: "◆", label: "Validation import" },
+  { to: "/transitaire/history", icon: "▣", label: "Historique dossiers" },
+  { to: "/transitaire/messages", icon: "◎", label: "Messagerie", badge: 2 },
+  { to: "/transitaire/profile", icon: "▤", label: "Mon compte" },
 ];
 
 export default function TransitaireSidebar({ company }) {
@@ -18,13 +19,9 @@ export default function TransitaireSidebar({ company }) {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
-        <div className="sidebar-logo-icon">T</div>
-        <div>
-          <div className="sidebar-logo-text">MGTS</div>
-          <div className="sidebar-logo-sub">ESPACE TRANSITAIRE</div>
-        </div>
-      </div>
+        <img src={logo} alt="MGTS Logo" style={{ width: 190, height: 150, marginRight: 8 }} />
 
+      </div>
       <nav className="sidebar-nav">
         {navItems.map(item => (
           <NavLink
