@@ -33,6 +33,14 @@ import DossiersHistory       from "./pages/Transitaire/DossiersHistory";
 import TransitaireMessages   from "./pages/Transitaire/TransitaireMessages";
 import TransitaireProfile    from "./pages/Transitaire/TransitaireProfile";
 
+import PaymentsCommissions   from "./pages/Admin/PaymentsCommissions";
+import UsersManagement       from "./pages/Admin/UsersManagement";
+import AdminDashboard        from "./pages/Admin/AdminDashboard";
+import OrdersSupervision    from "./pages/Admin/OrdersSupervision";
+import ExportsExcel          from "./pages/Admin/ExportsExcel";
+import SettingsAdmin         from "./pages/Admin/SettingsAdmin";
+
+
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -41,6 +49,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+
         <Route path="/client-dashboard" element={<ClientDashboard />} />
         <Route path="/products" element={<ProductsC />} />
         <Route path="/new" element={<NewRequestC />} />
@@ -48,12 +57,14 @@ function AnimatedRoutes() {
         <Route path="/orders" element={<OrdersC />} />
         <Route path="/messages" element={<MessagesC />} />
         <Route path="/profile" element={<ProfileC />} />
+
         <Route path="/supplier" element={<SupplierDashboard />} />
         <Route path="/supplier/products" element={<SupplierProducts />} />
         <Route path="/supplier/demands" element={<SupplierDemands />} />
         <Route path="/supplier/orders" element={<SupplierOrders />} />
         <Route path="/supplier/messages" element={<SupplierMessages />} />
         <Route path="/supplier/profile" element={<SupplierProfile />} />
+
         <Route path="/transport" element={<TransportDashboard />} />
         <Route path="/transport/orders" element={<ValidatedOrders />} />
         <Route path="/transport/logistics" element={<LogisticsFees />} />
@@ -70,6 +81,15 @@ function AnimatedRoutes() {
           <Route path="messages" element={<TransitaireMessages />} />
           <Route path="profile" element={<TransitaireProfile />} />
         </Route>
+
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/payments" element={<PaymentsCommissions />} />
+        <Route path="/admin/users" element={<UsersManagement />} />
+        <Route path="/admin/supplier" element={<UsersManagement initialRole="fournisseur" />} />
+        <Route path="/admin/transport" element={<UsersManagement initialRole="transporteur" />} />
+        <Route path="/admin/orders" element={<OrdersSupervision />} />
+        <Route path="/admin/exports" element={<ExportsExcel />} />
+        <Route path="/admin/settings" element={<SettingsAdmin />} />
       </Routes>
     </AnimatePresence>
   );

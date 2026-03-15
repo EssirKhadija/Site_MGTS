@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logoC.png";
 
 const navItems = [
@@ -12,6 +12,7 @@ const navItems = [
 ];
 
 export default function TransitaireSidebar({ company }) {
+  const navigate = useNavigate();
   const initials = company?.name
     ? company.name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase()
     : "TR";
@@ -45,6 +46,9 @@ export default function TransitaireSidebar({ company }) {
             <div className="sidebar-email">{company?.email ?? ""}</div>
           </div>
         </NavLink>
+        <button onClick={() => navigate('/login')} className="logout-button" style={{ marginTop: 10 }}>
+          Déconnexion
+        </button>
       </div>
     </aside>
   );
