@@ -4,7 +4,6 @@ const { authorize } = require("../middlewares/role.middleware");
 const order = require("../controllers/order.controller");
 const upload = require("../middlewares/upload.middleware");
 const payment = require("../controllers/payment.controller");
-const upload = require("../middlewares/upload.middleware");
 
 router.use(authenticate, authorize("client"));
 

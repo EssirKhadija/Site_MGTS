@@ -14,5 +14,7 @@ router.post("/reset-password", auth.resetPassword);
 router.get("/me", authenticate, auth.getMe);
 router.post("/setup-2fa", authenticate, auth.setup2FA);
 router.post("/enable-2fa", authenticate, auth.enable2FA);
+router.put("/profile", authenticate, auth.updateProfile);
+router.put("/change-password", authenticate, auth.changePassword);
 
 module.exports = router;

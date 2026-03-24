@@ -10,8 +10,12 @@ export const AuthProvider = ({ children }) => {
   // Load user on app start
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
-    if (token) fetchMe();
-    else setLoading(false);
+    if (token) {
+      fetchMe();
+    } else {
+      setUser(null);
+      setLoading(false);
+    }
   }, []);
 
   const fetchMe = async () => {

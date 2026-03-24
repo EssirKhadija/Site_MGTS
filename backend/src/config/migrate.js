@@ -2,26 +2,50 @@
 // MGTS - Database Migration
 // Run: node src/config/migrate.js
 // =============================================
-require('dotenv').config();
-const mysql = require('mysql2/promise');
+require("dotenv").config();
+const mysql = require("mysql2/promise");
 
 const run = async () => {
   const connection = await mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || "localhost",
     port: process.env.DB_PORT || 3306,
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "",
     multipleStatements: true,
   });
 
-  console.log('✅ Connected to MySQL');
+  console.log("✅ Connected to MySQL");
 
-  await connection.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_NAME || 'mgts_db'}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
-  await connection.query(`USE \`${process.env.DB_NAME || 'mgts_db'}\`;`);
+  await connection.query(
+    `CREATE DATABASE IF NOT EXISTS \`${
+      process.env.DB_NAME || "mgts_db"
+    }\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`
+  );
+  await connection.query(`USE \`${process.env.DB_NAME || "mgts_db"}\`;`);
   console.log(`✅ Database ready`);
 
   const queries = `
+  SET FOREIGN_KEY_CHECKS = 0;
 
+DROP TABLE IF EXISTS bank_transfer_proofs;
+DROP TABLE IF EXISTS messages;
+DROP TABLE IF EXISTS notifications;
+DROP TABLE IF EXISTS refresh_tokens;
+DROP TABLE IF EXISTS password_resets;
+DROP TABLE IF EXISTS email_verifications;
+DROP TABLE IF EXISTS order_totals;
+DROP TABLE IF EXISTS transitaire_quotes;
+DROP TABLE IF EXISTS transport_quotes;
+DROP TABLE IF EXISTS supplier_quotes;
+DROP TABLE IF EXISTS payments;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS transitaires;
+DROP TABLE IF EXISTS transporteurs;
+DROP TABLE IF EXISTS fournisseurs;
+DROP TABLE IF EXISTS users;
+
+SET FOREIGN_KEY_CHECKS = 1;
 -- ============================================================
 -- ENUMERATIONS (stored as VARCHAR with CHECK in MySQL 8+)
 -- ============================================================
@@ -200,7 +224,7 @@ CREATE TABLE IF NOT EXISTS transitaire_quotes (
   FOREIGN KEY (order_id)       REFERENCES orders(id) ON DELETE CASCADE,
   FOREIGN KEY (transitaire_id) REFERENCES users(id)  ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+ 
 -- ============================================================
 -- TABLE: order_totals  (final calculated quote shown to client)
 -- ============================================================
@@ -292,11 +316,11 @@ CREATE TABLE IF NOT EXISTS refresh_tokens (
 `;
 
   await connection.query(queries);
-  console.log('✅ All tables created successfully!');
+  console.log("✅ All tables created successfully!");
   await connection.end();
 };
 
-run().catch(err => {
-  console.error('❌ Migration failed:', err.message);
+run().catch((err) => {
+  console.error("❌ Migration failed:", err.message);
   process.exit(1);
 });

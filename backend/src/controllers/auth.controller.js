@@ -106,9 +106,6 @@ exports.login = async (req, res, next) => {
 
     const user = rows[0];
 
-    if (!user.isVerified) {
-      return unauthorized(res, "Please verify your email before logging in");
-    }
     if (user.status === "pending") {
       return unauthorized(res, "Your account is pending admin approval");
     }
@@ -358,6 +355,46 @@ exports.getMe = async (req, res, next) => {
     );
     if (rows.length === 0) return notFound(res, "User not found");
     return success(res, rows[0]);
+  } catch (err) {
+    next(err);
+  }
+};
+
+// ── UPDATE PROFILE ────────────────────────────────────────────
+exports.updateProfile = async (req, res, next) => {
+  try {
+    const { fullName, phone } = req.body;
+    await pool.query("UPDATE users SET fullName = ?, phone = ? WHERE id = ?", [
+      fullName,
+      phone,
+      req.user.id,
+    ]);
+    return success(res, null, "Profile updated successfully");
+  } catch (err) {
+    next(err);
+  }
+};
+
+// ── CHANGE PASSWORD ───────────────────────────────────────────
+exports.changePassword = async (req, res, next) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+
+    const [rows] = await pool.query("SELECT * FROM users WHERE id = ?", [
+      req.user.id,
+    ]);
+    if (rows.length === 0) return notFound(res, "User not found");
+
+    const isMatch = await bcrypt.compare(currentPassword, rows[0].password);
+    if (!isMatch) return unauthorized(res, "Current password is incorrect");
+
+    const hashed = await bcrypt.hash(newPassword, 12);
+    await pool.query("UPDATE users SET password = ? WHERE id = ?", [
+      hashed,
+      req.user.id,
+    ]);
+
+    return success(res, null, "Password changed successfully");
   } catch (err) {
     next(err);
   }
