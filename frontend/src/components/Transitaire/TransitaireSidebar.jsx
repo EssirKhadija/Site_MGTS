@@ -1,20 +1,58 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logoC.png";
+import { useAuth } from "../../context/AuthContext";
+import { ordersAPI } from "../../api/orders.api";
+import api from "../../api/axios";
+import { useEffect, useState } from "react";
 
-const navItems = [
-  { to: "/transitaire", icon: "⬡", label: "Tableau de bord" },
-  { to: "/transitaire/orders", icon: "◈", label: "Commandes", badge: 3 },
-  { to: "/transitaire/customs", icon: "✦", label: "Frais douaniers" },
-  { to: "/transitaire/import", icon: "◆", label: "Validation import" },
-  { to: "/transitaire/history", icon: "▣", label: "Historique dossiers" },
-  { to: "/transitaire/messages", icon: "◎", label: "Messagerie", badge: 2 },
-  { to: "/transitaire/profile", icon: "▤", label: "Mon compte" },
-];
+
 
 export default function TransitaireSidebar({ company }) {
+  const { logout, user } = useAuth()
+  const [badgeCounts, setBadgeCounts] = useState({
+    orders: 0,
+    messages: 0,
+  });
+
+  const fetchBadgeCounts = async () => {
+    try {
+      const [ordersRes, messagesRes] = await Promise.all([
+        api.get(ordersAPI.transitaireOrdersCounts), // Endpoint for order counts
+        api.get("/transitaire/messages/counts"), // Endpoint for message counts
+      ]);
+
+      setBadgeCounts({
+        orders: ordersRes.data.pendingOrders || 0,
+        messages: messagesRes.data.unreadMessages || 0,
+      });
+    } catch (err) {
+      console.error("Failed to fetch badge counts:", err);
+    } finally {
+      // Schedule next fetch in 30 seconds
+      setTimeout(fetchBadgeCounts, 30000);
+    }
+  };
+
+  useEffect(() => {
+    fetchBadgeCounts();
+    // Cleanup on unmount
+    return () => {
+      setBadgeCounts({ orders: 0, messages: 0 });
+    };
+  }, []);
+  const navItems = [
+    { to: "/transitaire", icon: "⬡", label: "Tableau de bord" },
+    { to: "/transitaire/orders", icon: "◈", label: "Commandes", badge: badgeCounts.orders },
+    { to: "/transitaire/customs", icon: "✦", label: "Frais douaniers" },
+    { to: "/transitaire/import", icon: "◆", label: "Validation import" },
+    { to: "/transitaire/history", icon: "▣", label: "Historique dossiers" },
+    { to: "/transitaire/messages", icon: "◎", label: "Messagerie", badge: badgeCounts.messages },
+    { to: "/transitaire/profile", icon: "▤", label: "Mon compte" },
+  ];
+  
   const navigate = useNavigate();
-  const initials = company?.name
-    ? company.name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase()
+  const initials = user
+    ? user.fullName.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase()
     : "TR";
 
   return (
@@ -42,11 +80,11 @@ export default function TransitaireSidebar({ company }) {
         <NavLink to="/transitaire/profile" className="sidebar-user-inner" style={{ textDecoration: "none" }}>
           <div className="sidebar-avatar">{initials}</div>
           <div>
-            <div className="sidebar-name">{company?.name ?? "Transitaire"}</div>
-            <div className="sidebar-email">{company?.email ?? ""}</div>
+            <div className="sidebar-name">{user?.fullName ?? "Transitaire"}</div>
+            <div className="sidebar-email">{user?.email ?? ""}</div>
           </div>
         </NavLink>
-        <button onClick={() => navigate('/login')} className="logout-button" style={{ marginTop: 10 }}>
+        <button onClick={logout} className="logout-button" style={{ marginTop: 10 }}>
           Déconnexion
         </button>
       </div>
