@@ -25,7 +25,7 @@ function Login() {
   const [error, setError] = useState("");
 
   // 2FA states
-  const [requires2FA, setRequires2FA] = useState(false);
+  const [requires2FA, setRequires2FA] = useState(true);
   const [userId, setUserId] = useState(null);
   const [totpToken, setTotpToken] = useState("");
 
@@ -38,10 +38,12 @@ function Login() {
     try {
       const result = await login({ email, password });
 
+      /*
       if (result.requires2FA) {
         setRequires2FA(true);
         setUserId(result.userId);
       }
+      */
       // redirect handled in handle2FA or here if no 2FA
     } catch (err) {
       setError(err.message || "Invalid credentials");
