@@ -25,7 +25,7 @@ function Login() {
   const [error, setError] = useState("");
 
   // 2FA states
-  const [requires2FA, setRequires2FA] = useState(true);
+  const [requires2FA, setRequires2FA] = useState(false);
   const [userId, setUserId] = useState(null);
   const [totpToken, setTotpToken] = useState("");
 
